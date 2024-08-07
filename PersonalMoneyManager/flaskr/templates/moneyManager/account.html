@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<body>
+    {% block content %}
+    <h2>Index</h2>
+    <form action="{{ url_for('moneymanager.add')}}" method="get">
+        
+        <label for="id">id</label>
+        <input type="number" id="id" name="id" value="{{conto['user_id']}}" readonly ><br><br>
+        <label for="saldo">saldo</label>
+        <input type="number" id="saldo" name="saldo" value="{{conto['soldi']}}" readonly ><br><br>
+        <label for="soldi">Aggiungi</label>
+        <input type="number" id="soldi" name="soldi" required><br><br>
+        
+        
+        <input type="submit" value="Aggiorna">
+    </form>
+    <br><br><br>
+    {% for t in transazioni %}
+        <p>{{ t['soldi'] }}, {{ t['created'] }}</p>
+    {% endfor %}
+
+    {% endblock %}
+</body>
